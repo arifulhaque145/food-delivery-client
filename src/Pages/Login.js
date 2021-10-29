@@ -1,10 +1,14 @@
 import React from "react";
+import Footer from "../Components/Footer";
+import LoginForm from "../Components/LoginForm";
+import Navs from "../Components/Navs";
 
 function Login() {
   return (
     <>
-      <div>this is login</div>
-      <div>This is some thing</div>
+      <Navs />
+      <LoginForm />
+      <Footer />
     </>
   );
 }

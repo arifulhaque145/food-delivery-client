@@ -8,7 +8,7 @@ function Navs() {
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
           <Link
             className="text-lg font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-            to="/home"
+            to="/"
           >
             Foodhunter
           </Link>
@@ -33,77 +33,13 @@ function Navs() {
               >
                 Home
               </Link>
-              <div
-                className="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-                id="demo-pages-dropdown"
-              >
-                <span className="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400">
-                  Admin Layout
-                </span>
-                <a
-                  href="../admin/dashboard.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Dashboard
-                </a>
-                <a
-                  href="../admin/settings.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Settings
-                </a>
-                <a
-                  href="../admin/tables.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Tables
-                </a>
-                <a
-                  href="../admin/maps.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Maps
-                </a>
-                <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100"></div>
-                <span className="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400">
-                  Auth Layout
-                </span>
-                <a
-                  href="./login.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Login
-                </a>
-                <a
-                  href="./register.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Register
-                </a>
-                <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100"></div>
-                <span className="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400">
-                  No Layout
-                </span>
-                <a
-                  href="../landing.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Landing
-                </a>
-                <a
-                  href="../profile.html"
-                  className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Profile
-                </a>
-              </div>
             </li>
             <li className="inline-block relative">
               <Link
                 className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                to="/events"
+                to="/order"
               >
-                Events
+                Orders
               </Link>
             </li>
             <li className="flex items-center">

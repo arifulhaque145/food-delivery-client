@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function Offers() {
   return (
-    <div>
+    <div className="px-12">
       <div className="my-14">
         <div className="text-center text-4xl font-bold uppercase tracking-widest">
           Offers

@@ -4,6 +4,7 @@ import AuthProvider from "../Context/AuthProvider";
 import DeliveryProvider from "../Context/DeliveryProvider";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
+import NotFound from "../Pages/NotFound";
 import Order from "../Pages/Order";
 import PlaceOrder from "../Pages/PlaceOrder";
 import Register from "../Pages/Register";
@@ -15,20 +16,20 @@ function AllRoutes() {
       <AuthProvider>
         <DeliveryProvider>
           <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <PrivateRoute exact path="/order">
+          <Route path="/home" component={Home} />
+          <PrivateRoute path="/order">
             <Order />
           </PrivateRoute>
-          <PrivateRoute exact path="/placeorder">
+          <PrivateRoute path="/placeorder">
             <PlaceOrder />
           </PrivateRoute>
-          <PrivateRoute exact path="/login">
+          <PrivateRoute path="/login">
             <Login />
           </PrivateRoute>
-          <PrivateRoute exact path="/register">
+          <PrivateRoute path="/register">
             <Register />
           </PrivateRoute>
-          {/* <Route path="/*" component={NotFound} /> */}
+          <Route path="/*" component={NotFound} />
         </DeliveryProvider>
       </AuthProvider>
     </Switch>

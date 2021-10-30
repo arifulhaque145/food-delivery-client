@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import initApp from "../Firebase/initApp";
 
 initApp();
@@ -18,10 +18,9 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
-  const location = useLocation();
 
   const auth = getAuth();
-  const url = location.state?.from || "/home";
+  const url = "/home";
 
   const createAccount = (name, email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -95,9 +94,7 @@ const useFirebase = () => {
   const logOut = () => {
     setIsLoading(true);
     signOut(auth)
-      .then(() => {
-        history.push(url);
-      })
+      .then(() => {})
       .finally(() => setIsLoading(false));
   };
 

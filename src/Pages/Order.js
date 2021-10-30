@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "../Components/Card";
 import Footer from "../Components/Footer";
 import Navs from "../Components/Navs";
+import SelectedItem from "../Components/SelectedItem";
 import { useDelivery } from "../Hooks/useDelivery";
 import useFetch from "../Hooks/useFetch";
 
@@ -28,9 +28,9 @@ function Order() {
         Your orders
       </div>
       {selectedItems.length !== 0 ? (
-        <div className="px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="px-12 flex flex-col">
           {selectedItems.map((item) => (
-            <Card key={item.id} data={item} />
+            <SelectedItem key={item.id} data={item} />
           ))}
         </div>
       ) : (
@@ -38,12 +38,17 @@ function Order() {
           style={{ height: "315px" }}
           className="flex justify-center items-center"
         >
-          <div className="text-4xl italic uppercase text-gray-500">No item selected</div>
+          <div className="text-4xl italic uppercase text-gray-500">
+            No item selected
+          </div>
         </div>
       )}
       {selectedItems.length !== 0 && (
         <div className="flex justify-center py-8">
-          <Link className="bg-red-900 uppercase font-bold text-xl px-10 py-3 shadow-md hover:bg-red-600 select-none cursor-pointer text-white" to="/placeorder">
+          <Link
+            className="bg-red-900 uppercase font-bold text-xl px-10 py-3 shadow-md hover:bg-red-600 select-none cursor-pointer text-white"
+            to="/placeorder"
+          >
             Click to proceed
           </Link>
         </div>

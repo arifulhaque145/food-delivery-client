@@ -3,12 +3,12 @@ import { Redirect, Route } from "react-router-dom";
 import { useAuth } from "../Hooks/useAuth";
 
 function PrivateRoute({ children, ...rest }) {
-  let auth = useAuth();
+  let { user } = useAuth();
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        auth.user ? (
+        user.email ? (
           children
         ) : (
           <Redirect

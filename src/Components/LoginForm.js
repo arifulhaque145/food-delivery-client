@@ -1,18 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useHistory, useLocation } from "react-router";
 import { useAuth } from "../Hooks/useAuth";
 
 function LoginForm() {
   const { register, handleSubmit } = useForm();
   const { signInUsingGoogle, logIn } = useAuth();
+  const history = useHistory();
+  const loc = useLocation();
+
+  const url = loc.state?.from || "/home";
 
   const onSubmit = (data) => {
     const { email, password } = data;
     logIn(email, password);
+    history.push(url);
   };
 
   const googleLogIn = () => {
     signInUsingGoogle();
+    history.push(url);
   };
 
   return (

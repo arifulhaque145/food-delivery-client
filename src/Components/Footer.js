@@ -57,7 +57,7 @@ function Footer() {
             border-t border-gray-500 text-gray-400 text-sm 
             flex-col md:flex-row max-w-6xl"
           >
-            <div className="mt-2">© Copyright 1998-year. All Rights Reserved.</div>
+            <div className="mt-2">FoodHunter©Copyright 2021. All Rights Reserved.</div>
             <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex text-2xl">
               <Link to="#" className="w-6 mx-1">
                 <i className="fab fa-facebook-square"></i>

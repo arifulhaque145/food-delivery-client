@@ -1,14 +1,12 @@
 import React from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../Hooks/useAuth";
 
 function Navs() {
   const { user, logOut } = useAuth();
-
   const history = useHistory();
-  const location = useLocation();
 
-  const url = location.state?.from || "/home";
+  const url = "/home";
 
   const nowLogOut = () => {
     logOut();

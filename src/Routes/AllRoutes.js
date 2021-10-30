@@ -1,24 +1,37 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import AuthProvider from "../Context/AuthProvider";
+import DeliveryProvider from "../Context/DeliveryProvider";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
-import NotFound from "../Pages/NotFound";
+import Order from "../Pages/Order";
+import PlaceOrder from "../Pages/PlaceOrder";
 import Register from "../Pages/Register";
+import PrivateRoute from "./PrivateRoute";
 
 function AllRoutes() {
   return (
-    <>
-      <Switch>
-        <AuthProvider>
+    <Switch>
+      <AuthProvider>
+        <DeliveryProvider>
           <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="*" component={NotFound} />
-        </AuthProvider>
-      </Switch>
-    </>
+          <Route exact path="/home" component={Home} />
+          <PrivateRoute exact path="/order">
+            <Order />
+          </PrivateRoute>
+          <PrivateRoute exact path="/placeorder">
+            <PlaceOrder />
+          </PrivateRoute>
+          <PrivateRoute exact path="/login">
+            <Login />
+          </PrivateRoute>
+          <PrivateRoute exact path="/register">
+            <Register />
+          </PrivateRoute>
+          {/* <Route path="/*" component={NotFound} /> */}
+        </DeliveryProvider>
+      </AuthProvider>
+    </Switch>
   );
 }
 

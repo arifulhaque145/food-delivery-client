@@ -9,6 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import initApp from "../Firebase/initApp";
 
 initApp();
@@ -16,8 +17,11 @@ initApp();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const history = useHistory();
+  const location = useLocation();
 
   const auth = getAuth();
+  const url = location.state?.from || "/home";
 
   const createAccount = (name, email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -25,11 +29,15 @@ const useFirebase = () => {
         const user = userCredential.user;
         upadateName(name);
         setUser(user);
+        alert("Register Successfully");
+        history.push("/home");
       })
       .catch((error) => {
         console.log(error.message);
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const upadateName = (name) => {
@@ -47,6 +55,8 @@ const useFirebase = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
+        alert("Login Successfully");
+        history.push(url);
       })
       .catch((error) => {
         console.log(error.message);
@@ -61,6 +71,8 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
+        alert("Login Successfully");
+        history.push(url);
       })
       .catch((error) => {
         console.log(error.message);
@@ -83,7 +95,9 @@ const useFirebase = () => {
   const logOut = () => {
     setIsLoading(true);
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        history.push(url);
+      })
       .finally(() => setIsLoading(false));
   };
 

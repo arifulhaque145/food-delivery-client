@@ -4,10 +4,10 @@ export const DeliveryContext = createContext();
 
 const DeliveryProvider = ({ children }) => {
   const [delivery, setdelivery] = useState([]);
-  const allContext = { delivery, setdelivery };
+  const allDelivery = { delivery, setdelivery };
 
   return (
-    <DeliveryContext.Provider value={allContext}>
+    <DeliveryContext.Provider value={allDelivery}>
       {children}
     </DeliveryContext.Provider>
   );

@@ -1,8 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../Hooks/useAuth";
 
 function LoginForm() {
   const { register, handleSubmit } = useForm();
+  const { signInUsingGoogle } = useAuth();
 
   const onSubmit = () => {
     console.log("hello");
@@ -43,6 +45,7 @@ function LoginForm() {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline uppercase w-full"
             type="submit"
             value="Google Sign in"
+            onClick={signInUsingGoogle}
           />
         </div>
       </div>

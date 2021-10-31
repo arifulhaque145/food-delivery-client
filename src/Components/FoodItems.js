@@ -6,7 +6,7 @@ function FoodItems() {
   const items = useFetch();
 
   return (
-    <div className="px-12">
+    <div className="px-16">
       <div className="my-14">
         <div className="text-center text-4xl font-bold uppercase tracking-widest">
           FoodItems

@@ -1,32 +1,29 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Redirect } from "react-router";
-import Footer from "../Components/Footer";
-import Navs from "../Components/Navs";
+import { useHistory } from "react-router";
 
 function PlaceOrder() {
   const { register, handleSubmit } = useForm();
+  const history = useHistory();
 
   const onSubmit = (data) => {
     const pro = window.confirm("Delete the item?");
     if (pro) {
-      <Redirect to="/" />;
+      alert("Order Completed");
+      history.push("/home");
     }
     console.log(data);
-    alert("Order Completed");
   };
 
   return (
     <>
-      <Navs />
-      <div className="px-24">
-        <div className="text-center uppercase text-2xl my-5 font-bold">
-          placeorder
-        </div>
+      <div className="py-16">
         <div className="flex flex-col items-center">
-          <div className="w-1/2 h-full text-center py-24 flex flex-col justify-center shadow-lg">
+          <div className="w-1/2 h-full text-center py-12 flex flex-col justify-center shadow-lg">
             <div>
-              <div className="uppercase font-medium">Your Order</div>
+              <div className="text-center uppercase text-2xl my-5 font-bold">
+                placeorder
+              </div>
               <div className="w-1/2 mx-auto my-8">
                 <div className="flex justify-between bg-red-600 text-white font-medium rounded py-1 px-3 uppercase">
                   <div>Product</div>
@@ -83,7 +80,6 @@ function PlaceOrder() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

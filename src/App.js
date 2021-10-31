@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthProvider from "./Context/AuthProvider";
 import DeliveryProvider from "./Context/DeliveryProvider";
+import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import NotFound from "./Pages/NotFound";
@@ -21,6 +22,9 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
+            <PrivateRoute path="/cart">
+              <Cart />
+            </PrivateRoute>
             <PrivateRoute path="/order">
               <Order />
             </PrivateRoute>

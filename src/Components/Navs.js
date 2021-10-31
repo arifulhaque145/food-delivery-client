@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../Hooks/useAuth";
+import logo from "../logo.png";
 
 function Navs() {
   const { user, logOut } = useAuth();
@@ -17,12 +18,15 @@ function Navs() {
     <nav className="top-0 sticky shadow-lg z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-gray-800">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start ">
-          <Link
-            className="text-lg font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-            to="/"
-          >
-            Foodhunter
-          </Link>
+          <div className="flex items-center">
+            <img src={logo} alt="" width="30px" className="mr-3" />
+            <Link
+              className="text-lg font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+              to="/"
+            >
+              Foodhunter
+            </Link>
+          </div>
           <button
             className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
             type="button"
@@ -43,14 +47,26 @@ function Navs() {
                 Home
               </Link>
             </li>
-            <li className="inline-block relative">
-              <Link
-                className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                to="/order"
-              >
-                Orders
-              </Link>
-            </li>
+            {user.email && (
+              <li className="inline-block relative">
+                <Link
+                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  to="/cart"
+                >
+                  Cart
+                </Link>
+              </li>
+            )}
+            {user.email && (
+              <li className="inline-block relative">
+                <Link
+                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  to="/order"
+                >
+                  My Orders
+                </Link>
+              </li>
+            )}
             <li className="flex items-center">
               {!user.email ? (
                 <Link
@@ -60,12 +76,12 @@ function Navs() {
                   Login
                 </Link>
               ) : (
-                <a
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  href="#pablo"
+                <Link
+                  className="lg:hover:text-red-300 text-red-500 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  to="/"
                 >
                   {user?.displayName || user.displayName !== null || "unknown"}
-                </a>
+                </Link>
               )}
             </li>
             <li className="flex items-center">

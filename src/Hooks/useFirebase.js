@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -28,14 +29,24 @@ const useFirebase = () => {
         const user = userCredential.user;
         upadateName(name);
         setUser(user);
-        alert("Register Successfully");
-        history.push("/home");
       })
       .catch((error) => {
-        console.log(error.message);
+        return;
       })
       .finally(() => {
         setIsLoading(false);
+      });
+  };
+
+  const deleteNewUser = () => {
+    const user = auth.currentUser;
+
+    deleteUser(user)
+      .then(() => {
+        alert("user deleted successfully");
+      })
+      .catch((error) => {
+        alert("user not deleted");
       });
   };
 
@@ -54,7 +65,6 @@ const useFirebase = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        alert("Login Successfully");
         history.push(url);
       })
       .catch((error) => {
@@ -70,7 +80,6 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
-        alert("Login Successfully");
         history.push(url);
       })
       .catch((error) => {
@@ -103,6 +112,7 @@ const useFirebase = () => {
     logIn,
     createAccount,
     isLoading,
+    deleteNewUser,
     signInUsingGoogle,
     logOut,
   };

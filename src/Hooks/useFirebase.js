@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import initApp from "../Firebase/initApp";
+import useFetch from "./useFetch";
 
 initApp();
 
@@ -19,6 +20,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
+  const { users } = useFetch();
 
   const auth = getAuth();
   const url = "/home";
@@ -30,7 +32,7 @@ const useFirebase = () => {
         upadateName(name);
         setUser(user);
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://calm-shore-51674.herokuapp.com/users", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -93,6 +95,18 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         setUser(result.user);
+
+        const log = users.find((item) => item?.email === result?.user?.email);
+        if (!log) {
+          const user = {name: result?.user?.displayName, email: result?.user?.email};
+          fetch("https://calm-shore-51674.herokuapp.com/users", {
+            method: "post",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          });
+        }
         history.push(url);
       })
       .catch((error) => {

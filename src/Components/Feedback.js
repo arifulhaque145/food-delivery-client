@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import FeedbackCard from "./FeedbackCard";
 
 function Feedback() {
   return (
@@ -12,8 +12,16 @@ function Feedback() {
           All Food contains
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        {/* todo */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <FeedbackCard
+          data={{ name: "Henry Ford", desc: "Nice and beautiful" }}
+        />
+        <FeedbackCard
+          data={{ name: "Peter Martin", desc: "Delivery on right time" }}
+        />
+        <FeedbackCard
+          data={{ name: "Gray Hackings", desc: "Food Items are good and well services" }}
+        />
       </div>
     </div>
   );

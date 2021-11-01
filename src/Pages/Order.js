@@ -1,33 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navs from "../Components/Navs";
-import OrderList from "../Components/OrderList";
-import { useDelivery } from "../Hooks/useDelivery";
+import useAuth from "../Hooks/useAuth";
 import useFetch from "../Hooks/useFetch";
 
 function Order() {
-  const items = useFetch();
-  const { delivery, setdelivery } = useDelivery();
+  const { user } = useAuth();
+  const { users } = useFetch();
 
-  // const filterItems = delivery.map((ids) =>
-  //   items?.find((element) => element.id === ids)
-  // );
+  const getId = users?.find((item) => item?.email === user?.email);
 
-  // let selectedItems = [];
-  // filterItems.map((item) => {
-  //   if (item !== undefined) {
-  //     selectedItems.push(item);
-  //   }
-  // });
+  // const carts = getId?.cart;
+  // console.log(getId?._id, getId?.cart);
+  if (getId) {
+    const newOrder = { userid: getId?._id, name: getId?.name, email: getId?.email, items: getId?.cart, status: 'pending'};
+    fetch(`https://calm-shore-51674.herokuapp.com/orders`, {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    });
+  }
 
   return (
     <>
       <Navs />
-      {/* <div className="text-center mt-20 mb-10 text-3xl uppercase font-bold">
+      <div className="text-center mt-20 mb-10 text-3xl uppercase font-bold">
         Your orders
       </div>
-      {selectedItems.length !== 0 ? (
+      {/* {selectedItems.length !== 0 ? (
         <div className="px-12 flex flex-col">
           {selectedItems.map((item) => (
             <OrderList key={item.id} data={item} />

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import OfferCard from "./OfferCard";
 
 function Offers() {
   return (
@@ -13,7 +13,9 @@ function Offers() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {/* todo */}
+        <OfferCard data={{ offer: "20" }} />
+        <OfferCard data={{ offer: "50" }} />
+        <OfferCard data={{ offer: "90" }} />
       </div>
     </div>
   );

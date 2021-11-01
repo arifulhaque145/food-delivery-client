@@ -8,10 +8,11 @@ function SelectedItem({ data }) {
   const getId = users?.find((item) => item?.email === user?.email);
 
   function deleteItem(id) {
-    if (id) {
+    const idea = window.confirm("Do you want to delete?");
+    if (id && idea) {
       const lists = getId?.cart.filter((item) => item !== id);
       console.log(lists);
-      fetch(`http://localhost:5000/users/${getId?._id}`, {
+      fetch(`https://calm-shore-51674.herokuapp.com/userss/${getId?._id}`, {
         method: "put",
         headers: {
           "content-type": "application/json",

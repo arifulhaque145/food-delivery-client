@@ -13,7 +13,7 @@ function Card({ data }) {
 
   const selectItem = (newid) => {
     if (state) {
-      fetch(`http://localhost:5000/users/${getId?._id}`, {
+      fetch(`https://calm-shore-51674.herokuapp.com/users/${getId?._id}`, {
         method: "put",
         headers: {
           "content-type": "application/json",

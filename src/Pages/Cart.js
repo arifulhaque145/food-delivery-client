@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navs from "../Components/Navs";
 import SelectedItem from "../Components/SelectedItem";
@@ -52,9 +53,9 @@ function Cart() {
       )}
       {logs?.length !== 0 && (
         <div className="flex justify-center py-8">
-          <div className="bg-red-900 uppercase font-bold text-xl px-10 py-3 shadow-md hover:bg-red-600 select-none cursor-pointer text-white">
+          <Link className="bg-red-900 uppercase font-bold text-xl px-10 py-3 shadow-md hover:bg-red-600 select-none cursor-pointer text-white" to="/order">
             Click to proceed
-          </div>
+          </Link>
         </div>
       )}
       <Footer />

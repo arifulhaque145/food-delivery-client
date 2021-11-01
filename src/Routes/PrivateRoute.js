@@ -1,9 +1,14 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useAuth } from "../Hooks/useAuth";
+import Loader from "../Components/Loader";
+import useAuth from "../Hooks/useAuth";
 
 function PrivateRoute({ children, ...rest }) {
-  let { user } = useAuth();
+  let { user, isLoading } = useAuth();
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <Route
       {...rest}

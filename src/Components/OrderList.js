@@ -1,7 +1,7 @@
 import React from "react";
 
 function OrderList({ data }) {
-  const { id, name, imgUrl, desc, price } = data;
+  const { name, imgUrl, desc, price } = data;
 
   return (
     <div className="w-full bg-gray-50 mb-5 flex items-center justify-between px-6 py-4 rounded-md shadow-md">

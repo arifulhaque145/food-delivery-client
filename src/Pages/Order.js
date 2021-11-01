@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navs from "../Components/Navs";
 import OrderList from "../Components/OrderList";
-import SelectedItem from "../Components/SelectedItem";
 import { useDelivery } from "../Hooks/useDelivery";
 import useFetch from "../Hooks/useFetch";
 
@@ -11,21 +10,21 @@ function Order() {
   const items = useFetch();
   const { delivery, setdelivery } = useDelivery();
 
-  const filterItems = delivery.map((ids) =>
-    items.find((element) => element.id === ids)
-  );
+  // const filterItems = delivery.map((ids) =>
+  //   items?.find((element) => element.id === ids)
+  // );
 
-  let selectedItems = [];
-  filterItems.map((item) => {
-    if (item !== undefined) {
-      selectedItems.push(item);
-    }
-  });
+  // let selectedItems = [];
+  // filterItems.map((item) => {
+  //   if (item !== undefined) {
+  //     selectedItems.push(item);
+  //   }
+  // });
 
   return (
     <>
       <Navs />
-      <div className="text-center mt-20 mb-10 text-3xl uppercase font-bold">
+      {/* <div className="text-center mt-20 mb-10 text-3xl uppercase font-bold">
         Your orders
       </div>
       {selectedItems.length !== 0 ? (
@@ -54,7 +53,7 @@ function Order() {
             Click to proceed
           </Link>
         </div>
-      )}
+      )} */}
       <Footer />
     </>
   );

@@ -3,7 +3,7 @@ import useFetch from "../Hooks/useFetch";
 import Card from "./Card";
 
 function FoodItems() {
-  const items = useFetch();
+  const { items } = useFetch();
 
   return (
     <div className="px-16">
@@ -17,7 +17,7 @@ function FoodItems() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => (
-          <Card key={item.id} data={item} />
+          <Card key={item._id} data={item} />
         ))}
       </div>
     </div>

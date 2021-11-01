@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../Hooks/useAuth";
+import useAuth from "../Hooks/useAuth";
 import logo from "../logo.png";
 
 function Navs() {
@@ -47,6 +47,16 @@ function Navs() {
                 Home
               </Link>
             </li>
+            {user.email && (
+              <li className="inline-block relative">
+                <Link
+                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  to="/admin"
+                >
+                  Admin
+                </Link>
+              </li>
+            )}
             {user.email && (
               <li className="inline-block relative">
                 <Link

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
-import { useAuth } from "../Hooks/useAuth";
+import useAuth from "../Hooks/useAuth";
 import Loader from "./Loader";
 
 function LoginForm() {

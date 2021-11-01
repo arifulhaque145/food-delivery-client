@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
-import { useAuth } from "../Hooks/useAuth";
+import useAuth from "../Hooks/useAuth";
 import Loader from "./Loader";
 
 function RegisterForm() {
@@ -23,19 +23,6 @@ function RegisterForm() {
 
     createAccount(name, email, password);
     // console.log(data);
-
-    fetch("http://localhost:5000/users", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((datas) => {
-        if (datas.insertedId) {
-        }
-      });
 
     setloading(true);
     setTimeout(() => {

@@ -29,6 +29,19 @@ const useFirebase = () => {
         const user = userCredential.user;
         upadateName(name);
         setUser(user);
+
+        fetch("http://localhost:5000/users", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((datas) => {
+            if (datas.insertedId) {
+            }
+          });
       })
       .catch((error) => {
         return;

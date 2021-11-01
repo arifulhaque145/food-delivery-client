@@ -1,25 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navs from "../Components/Navs";
 import SelectedItem from "../Components/SelectedItem";
-import { useDelivery } from "../Hooks/useDelivery";
+import useAuth from "../Hooks/useAuth";
 import useFetch from "../Hooks/useFetch";
 
 function Cart() {
-  const items = useFetch();
-  const { delivery, setdelivery } = useDelivery();
+  const { user } = useAuth();
+  const { users, items } = useFetch();
 
-  const filterItems = delivery.map((ids) =>
-    items.find((element) => element.id === ids)
-  );
+  const getId = users?.find((item) => item?.email === user?.email);
 
-  let selectedItems = [];
-  filterItems.map((item) => {
-    if (item !== undefined) {
-      selectedItems.push(item);
-    }
-  });
+  const carts = getId?.cart;
+
+  let logs = [];
+  if (carts) {
+    logs = carts?.map((ids) => items?.find((item) => item?._id === ids));
+
+    // const news = carts?.reduce(function (prev, cur) {
+    //   prev[cur] = (prev[cur] || 0) + 1;
+    //   return prev;
+    // }, {});
+    // console.log(news);
+    // news?.map((item) => console.log(item));
+    // for (const key in news) {
+    //   console.log(key, news[key]);
+    // }
+  }
 
   return (
     <>
@@ -27,10 +34,10 @@ function Cart() {
       <div className="text-center mt-20 mb-10 text-3xl uppercase font-bold">
         Your Food Items
       </div>
-      {selectedItems.length !== 0 ? (
+      {logs?.length !== 0 ? (
         <div className="px-12 flex flex-col">
-          {selectedItems.map((item) => (
-            <SelectedItem key={item.id} data={item} />
+          {logs?.map((item, i) => (
+            <SelectedItem key={i} data={item} />
           ))}
         </div>
       ) : (
@@ -43,14 +50,11 @@ function Cart() {
           </div>
         </div>
       )}
-      {selectedItems.length !== 0 && (
+      {logs?.length !== 0 && (
         <div className="flex justify-center py-8">
-          <Link
-            className="bg-red-900 uppercase font-bold text-xl px-10 py-3 shadow-md hover:bg-red-600 select-none cursor-pointer text-white"
-            to="/order"
-          >
+          <div className="bg-red-900 uppercase font-bold text-xl px-10 py-3 shadow-md hover:bg-red-600 select-none cursor-pointer text-white">
             Click to proceed
-          </Link>
+          </div>
         </div>
       )}
       <Footer />

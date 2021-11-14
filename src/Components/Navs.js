@@ -1,13 +1,14 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import logo from "../logo.png";
 
 function Navs() {
   const { user, logOut } = useAuth();
   const history = useHistory();
+  const location = useLocation();
 
-  const url = "/home";
+  const url = location?.state?.from || "/";
 
   const nowLogOut = () => {
     logOut();
@@ -61,16 +62,6 @@ function Navs() {
               <li className="inline-block relative">
                 <Link
                   className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  to="/cart"
-                >
-                  Cart
-                </Link>
-              </li>
-            )}
-            {user.email && (
-              <li className="inline-block relative">
-                <Link
-                  className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   to="/order"
                 >
                   My Orders
@@ -105,7 +96,7 @@ function Navs() {
               ) : (
                 <Link
                   className="border border-white hover:bg-white text-white hover:text-black active:bg-gray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                  to="/home"
+                  to="/"
                   onClick={nowLogOut}
                 >
                   Logout

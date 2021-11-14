@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 function PlaceOrder() {
+  const { id } = useParams();
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  const { user } = useAuth();
+  const [item, setItem] = useState({});
+
+  fetch(`https://calm-shore-51674.herokuapp.com/products/${id}`)
+    .then((res) => res.json())
+    .then((data) => setItem(data));
 
   const onSubmit = (data) => {
-    const pro = window.confirm("Delete the item?");
+    const pro = window.confirm("Do you want to add the item?");
     if (pro) {
       alert("Order Completed");
-      history.push("/home");
+      history.push("/order");
     }
-    console.log(data);
+    console.log(data, id);
   };
 
   return (
@@ -20,27 +28,9 @@ function PlaceOrder() {
       <div className="py-16">
         <div className="flex flex-col items-center">
           <div className="w-1/2 h-full text-center py-12 flex flex-col justify-center shadow-lg">
-            <div>
-              <div className="text-center uppercase text-2xl my-5 font-bold">
-                placeorder
-              </div>
-              <div className="w-1/2 mx-auto my-8">
-                <div className="flex justify-between bg-red-600 text-white font-medium rounded py-1 px-3 uppercase">
-                  <div>Product</div>
-                  <div>Subtotal</div>
-                </div>
-                <div className="flex justify-between my-1 text-gray-700 rounded py-1 px-3">
-                  <div>
-                    Product <span className="font-bold">x 1</span>{" "}
-                  </div>
-                  <div>$12.99</div>
-                </div>
-                <hr />
-                <div className="flex justify-between my-1 text-gray-700 rounded py-1 px-3 font-bold">
-                  <div>Total</div>
-                  <div>$100</div>
-                </div>
-              </div>
+            <div className="flex justify-between w-1/2 mx-auto my-5 shadow-md p-5">
+              <h1>{item?.name}</h1>
+              <h1>{item?.price}</h1>
             </div>
             <div className="uppercase font-medium">Billing Details</div>
             <form
@@ -49,6 +39,7 @@ function PlaceOrder() {
             >
               <input
                 {...register("name")}
+                defaultValue={user?.displayName}
                 className="my-2 py-2 px-4 bg-blue-50"
                 placeholder="Full Name"
               />
@@ -59,6 +50,7 @@ function PlaceOrder() {
               />
               <input
                 {...register("email")}
+                defaultValue={user?.email}
                 className="my-2 py-2 px-4 bg-blue-50"
                 placeholder="Email"
               />

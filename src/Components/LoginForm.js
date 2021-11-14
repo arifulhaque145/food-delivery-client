@@ -11,7 +11,7 @@ function LoginForm() {
   const loc = useLocation();
   const [loading, setloading] = useState(true);
 
-  const url = loc.state?.from || "/home";
+  const url = loc.state?.from || "/";
 
   const onSubmit = (data) => {
     const { email, password } = data;

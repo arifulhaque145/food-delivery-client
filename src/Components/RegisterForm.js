@@ -26,7 +26,7 @@ function RegisterForm() {
 
     setloading(true);
     setTimeout(() => {
-      history.push("/home");
+      history.push("/");
     }, 1500);
   };
 

@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthProvider from "./Context/AuthProvider";
 import DeliveryProvider from "./Context/DeliveryProvider";
 import Admin from "./Pages/Admin";
-import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import NotFound from "./Pages/NotFound";
@@ -20,16 +19,10 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/home">
-              <Home />
-            </Route>
-            <PrivateRoute path="/cart">
-              <Cart />
-            </PrivateRoute>
             <PrivateRoute path="/order">
               <Order />
             </PrivateRoute>
-            <PrivateRoute path="/placeorder">
+            <PrivateRoute path="/placeorder/:id">
               <PlaceOrder />
             </PrivateRoute>
             <PrivateRoute path="/admin">

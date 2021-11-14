@@ -19,13 +19,15 @@ initApp();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  
   const history = useHistory();
   const { users } = useFetch();
 
   const auth = getAuth();
-  const url = "/home";
+  const url = history?.location?.from || "/";
 
   const createAccount = (name, email, password) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -66,6 +68,7 @@ const useFirebase = () => {
   };
 
   const upadateName = (name) => {
+    setIsLoading(true);
     updateProfile(auth.currentUser, {
       displayName: name,
     })
@@ -76,6 +79,7 @@ const useFirebase = () => {
   };
 
   const logIn = (email, password) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -116,6 +120,7 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);

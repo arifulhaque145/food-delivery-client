@@ -8,7 +8,7 @@ function Order() {
   const [orderData, setOrderData] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${user.email}`)
+    fetch(`https://calm-shore-51674.herokuapp.com/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrderData(data));
   }, [user.email]);

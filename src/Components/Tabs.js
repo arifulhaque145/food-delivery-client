@@ -5,7 +5,7 @@ function Tabs({ color }) {
   const [allOrders, setAllOrders] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://calm-shore-51674.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, [allOrders]);

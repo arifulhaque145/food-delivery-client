@@ -21,7 +21,7 @@ function PlaceOrder() {
   const { _id, ...rest } = item;
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/orders", {
+    fetch("https://calm-shore-51674.herokuapp.com/orders", {
       method: "post",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ ...rest, ...data }),

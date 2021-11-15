@@ -6,9 +6,10 @@ function OrderList({ data }) {
   const deleteItem = (id) => {
     const conformMessage = window.confirm("Press a button!");
     
-    conformMessage && fetch(`http://localhost:5000/orders/${id}`, {
-      method: "delete",
-    });
+    conformMessage &&
+      fetch(`https://calm-shore-51674.herokuapp.com/orders/${id}`, {
+        method: "delete",
+      });
   };
 
   return (

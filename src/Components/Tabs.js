@@ -67,7 +67,7 @@ function Tabs({ color }) {
               href="#link2"
               role="tablist"
             >
-              Add a new product
+              Add a new food item
             </a>
           </li>
         </ul>

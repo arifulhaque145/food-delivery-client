@@ -7,7 +7,7 @@ function Admin() {
   return (
     <>
       <Navs />
-      <div className="lg:w-1/2 lg:mx-auto m-5 lg:my-8">
+      <div className="lg:w-3/4 lg:mx-auto m-5 lg:my-8">
         <Tabs color="pink" />
       </div>
       <Footer />

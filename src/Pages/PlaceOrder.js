@@ -24,7 +24,7 @@ function PlaceOrder() {
     fetch("https://calm-shore-51674.herokuapp.com/orders", {
       method: "post",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...rest, ...data }),
+      body: JSON.stringify({ ...rest, ...data, status: "pending" }),
     })
       .then((res) => res.json())
       .then((check) => setInsertState(check.acknowledged));

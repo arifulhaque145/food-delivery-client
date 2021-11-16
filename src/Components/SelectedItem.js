@@ -11,7 +11,6 @@ function SelectedItem({ data }) {
     const idea = window.confirm("Do you want to delete?");
     if (id && idea) {
       const lists = getId?.cart.filter((item) => item !== id);
-      console.log(lists);
       fetch(`https://calm-shore-51674.herokuapp.com/userss/${getId?._id}`, {
         method: "put",
         headers: {

@@ -4,7 +4,7 @@ function OrderList({ data }) {
   const { _id, name, imgUrl, desc, price, delivery } = data;
 
   const deleteItem = (id) => {
-    const conformMessage = window.confirm("Press a button!");
+    const conformMessage = window.confirm("Do you want to delete this item");
     
     conformMessage &&
       fetch(`https://calm-shore-51674.herokuapp.com/orders/${id}`, {

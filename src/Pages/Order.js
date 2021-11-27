@@ -11,7 +11,7 @@ function Order() {
     fetch(`https://calm-shore-51674.herokuapp.com/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrderData(data));
-  }, [user.email]);
+  }, [orderData]);
 
   return (
     <>
